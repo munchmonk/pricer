@@ -1,0 +1,66 @@
+// WHITE
+1x Greater Auramancy
+1x Idyllic Tutor
+1x Patrician’s Scorn
+
+// BLUE
+4x Cryptic Command
+1x Negate
+1x Pact of Negation
+1x Remand
+1x Serum Visions
+1x Sleight of Hand
+1x Teferi, Mage of Zhalfir
+
+// BLACK
+3x Bitterblossom
+1x Smallpox
+3x Thoughtseize
+
+// RED
+1x Abrade
+1x Ancient Grudge
+1x Combust
+1x Grapeshot
+1x Lightning Bolt
+1x Rift Bolt
+1x Simian Spirit Guide
+1x Smash to Smithereens
+
+// GREEN
+1x Devoted Druid
+1x Eternal Witness
+1x Farseek
+1x Nature’s Claim
+1x Ramunap Excavator
+2x Scapeshift
+1x Wood Elves
+
+// ARTIFACT
+1x Aether Vial
+4x Lotus Bloom
+1x Tormod’s Crypt
+
+// GOLD
+2x Gaddock Teeg
+1x Glittering Wish
+1x Kitchen Finks
+1x Terminate
+1x Wheel of Sun and Moon
+
+// LANDS
+1x Boseiju, Who Shelters All
+1x Dragonskull Summit
+1x Drowned Catacomb
+1x Horizon Canopy
+1x Pendelhaven
+1x Sunpetal Grove
+1x Tolaria West
+1x Urborg, Tomb of Yawgmoth
+
+// BASIC LANDS
+30x Plains
+30x Island
+30x Swamp
+30x Mountain
+30x Forest

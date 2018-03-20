@@ -1,0 +1,37 @@
+// CREATURES
+4x Primeval Titan
+4x Sakura-Tribe Elder
+1x Wood Elves
+2x Relic of Progenitus
+
+// SPELLS
+2x Prismatic Omen
+2x Summoner's Pact
+3x Lightning Bolt
+4x Farseek
+3x Scapeshift
+4x Search for Tomorrow
+2x Sweltering Suns
+2x Hour of Promise
+
+// LANDS
+4x Stomping Ground
+2x Forest
+3x Windswept Heath
+3x Cinder Glade
+4x Valakut, the Molten Pinnacle
+4x Wooded Foothills
+7x Mountain
+
+// SIDEBOARD
+2x Engineered Explosives
+1x Grafdigger's Cage
+1x Relic of Progenitus
+2x Obstinate baloth
+1x Reclamation Sage
+2x Tireless Tracker
+1x Ancient Grudge
+1x Guttural Response
+2x Destructive Revelry
+1x Anger of the Gods
+1x Crumble to Dust

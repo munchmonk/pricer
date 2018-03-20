@@ -3,6 +3,7 @@
 # threading to improve speed
 # accept an output as input to update a few cards, keeping the rest intact
 # bug: if a card has been printed in one set only, the page doesn't exist and it doesn't find it
+# accept quantity as digit instead of digit + x (4 bolt instead of 4x bolt)
 
 from __future__ import print_function
 from bs4 import BeautifulSoup
@@ -78,7 +79,7 @@ def get_card_price(cardname, copies=1, min_cond=POOR[1]):
                 price = price.split(' ')
                 playset_price = float(price[0])
                 unit_price = float(price[2])
-                price = playset_price
+                price = unit_price
                 copies_found += round(playset_price / unit_price)
             else:
                 price = float(price)
@@ -109,8 +110,6 @@ def get_card_price(cardname, copies=1, min_cond=POOR[1]):
     return [NOTENOUGH]
 
 
-
-
 def get_decklist(filename):
     ret = []
 
@@ -130,7 +129,10 @@ def get_decklist(filename):
             continue
 
         # Ensure the firse word is a number, if not log it as a comment
-        quantity = word_list[0][:-1]
+        quantity = word_list[0]
+        if quantity[-1] not in '0123456789':
+            quantity = quantity[:-1]
+            # quantity = word_list[0][:-1]
         try:
             quantity = int(quantity)
         except ValueError:
@@ -142,18 +144,20 @@ def get_decklist(filename):
         cardname = manual_decode(cardname)
         ret.append((quantity, cardname))
 
+    f.close()
     return ret
 
 
 def get_owned_quantity(item, owned):
     for o in owned:
-        if o[1] == item[1]:
+        if o[1].lower() == item[1].lower():
             return o[0]
     return 0
 
 
-def get_deck_price(decklist, min_cond=POOR[1], owned=None, comments=True):
+def get_deck_price(decklist, filename, min_cond=POOR[1], owned=None, comments=True):
     totprice = 0
+    f = open(filename, 'w')
 
     for item in decklist:
         orig_quantity = item[0]
@@ -162,7 +166,7 @@ def get_deck_price(decklist, min_cond=POOR[1], owned=None, comments=True):
 
         # Print comments and move on
         if quantity == -1 and comments:
-            print(item[1], end='')
+            f.write(item[1])
             continue
 
         # Check if I already have copies of the card in question
@@ -172,7 +176,8 @@ def get_deck_price(decklist, min_cond=POOR[1], owned=None, comments=True):
                 quantity = orig_quantity - owned_quantity
                 s1 = "{0}x {1}".format(min(orig_quantity, owned_quantity), cardname)
                 s2 = "ALREADY OWNED"
-                print(justify(s1, s2))
+                s = justify(s1, s2) + '\n'
+                f.write(s)
 
         # Calculate cost of the remaining copies
         if quantity > 0:
@@ -193,23 +198,38 @@ def get_deck_price(decklist, min_cond=POOR[1], owned=None, comments=True):
                 totprice += playset_price
             else:
                 s2 = "*** BUG, PLEASE REPORT IT ***"
-            print(justify(s1, s2))
+            s = justify(s1, s2) + '\n'
+            f.write(s)
 
-    print('')
+    f.write('\n')
     s1 = 'Total deck price'
     s2 = '{:.2f} euro'.format(totprice)
-    print(justify(s1, s2))
+    s = justify(s1, s2) + '\n'
+    f.write(s)
+    f.close()
 
 
 def parse_commands(args):
     condition = PLAYED[1]
     copies = 1
     comments = True
-    owned = None
+    owned = True
 
     # Not enough arguments
     if len(args) == 1:
-        print("Not enough arguments!")
+        print('Usage:')
+        print('   ./price.py <cardname> [options]')
+        print('   ./price.py <decklist> [options]')
+        print('Options:')
+        print('   -plain          only copies cards, leaving comments out')
+        print('   -full           calculates the full price of the deck, regardless of owned cards')
+        print('   -po             cards in any condition (default)')
+        print('   -pl             only cards in played condition and above')
+        print('   -lp             only cards in light played condition and above')
+        print('   -g              only cards in good condition and above')
+        print('   -ex             only cards in excellent condition and above')
+        print('   -nm             only cards in near mint condition and above')
+        print('   -m              only cards in mint condition')
         return
 
     args = args[1:]
@@ -224,16 +244,16 @@ def parse_commands(args):
             condition = LIGHT_PLAYED[1]
         elif arg == '-g':
             condition = GOOD[1]
-        elif arg == '-e':
+        elif arg == '-ex':
             condition = EXCELLENT[1]
         elif arg == '-nm':
             condition = NEAR_MINT[1]
         elif arg == '-m':
             condition = MINT[1]
-        elif arg == '-nc':
+        elif arg == '-plain':
             comments = False
-        elif arg == '-no':
-            owned = None
+        elif arg == '-full':
+            owned = False
         else:
             name += arg + ' '
 
@@ -244,10 +264,17 @@ def parse_commands(args):
         deck = get_decklist(name)
         if owned:
             owned = get_decklist('owned.txt')
-        get_deck_price(deck, condition, owned, comments)
+            filename = name[:-4] + '_myprice.txt'
+        else:
+            owned = []
+            filename = name[:-4] + '_fullprice.txt'
+        print("Calculating total price for decklist...")
+        get_deck_price(deck, filename, condition, owned, comments)
+        print("Process completed! Results are in {}".format(filename))
 
     # Single card lookup
     else:
+        print("Searching...")
         price = get_card_price(name, copies, condition)[0]
         if price == PAGENOTFOUND:
             print('Not found - check spelling.')

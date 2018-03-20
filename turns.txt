@@ -1,0 +1,44 @@
+
+Creatures (2)
+
+    2x Snapcaster Mage
+
+Planeswalkers (2)
+
+    2x Jace, the Mind Sculptor
+
+Lands (22)
+
+    9x Island
+    4x Flooded Strand
+    2x Glacial Fortress
+    2x Hallowed Fountain
+    1x Inkmoth Nexus
+    1x Irrigated Farmland
+    1x Prairie Stream
+    1x Scalding Tarn
+    1x Mikokoro, Center of the Sea
+
+Spells (34)
+
+    1x Howling Mine
+    4x Dictate of Kruphix
+    2x Cryptic Command
+    3x Gigadrowse
+    3x Opt
+    2x Remand
+    4x Exhaustion
+    3x Part the Waterveil
+    4x Serum Visions
+    4x Temporal Mastery
+    4x Time Warp
+
+    Sideboard
+    3x Chalice of the Void
+    2x Rest in Peace
+    2x Stony Silence
+    1x Hurkyl's Recall
+    1x Settle the Wreckage
+    3x Terminus
+    3x Timely Reinforcements
+

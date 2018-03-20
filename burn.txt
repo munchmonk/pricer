@@ -1,0 +1,31 @@
+// CREATURES - 13
+4x Goblin Guide
+4x Eidolon of the Great Revel
+4x Monastery Swiftspear
+1x Grim Lavamancer
+
+// SPELLS - 27
+4x Lightning Bolt
+4x Lava Spike
+4x Rift Bolt
+4x Skullcrack
+4x Boros Charm
+4x Searing Blaze
+3x Lightning Helix
+
+// LANDS - 20
+4x Wooded Foothills
+4x Bloodstained Mire
+2x Arid Mesa
+3x Inspiring Vantage
+3x Sacred Foundry
+1x Stomping Ground
+3x Mountain
+
+// SIDEBOARD - 15
+3x Rest in Peace
+4x Destructive Revelry
+3x Path to Exile
+1x Shattering Spree
+3x Shrine of Burning Rage
+1x Relic of Progenitus
